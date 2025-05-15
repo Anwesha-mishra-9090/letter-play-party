@@ -1,4 +1,6 @@
 
+import englishDictionary from './englishDictionary';
+
 /**
  * Check if word can be formed from the given letters
  * @param word Word to check
@@ -24,28 +26,6 @@ export const canFormWord = (word: string, letters: string[]): boolean => {
   return true;
 };
 
-// English word list - small sample for fast validation
-// In a real app, you might use an API or a more complete dictionary
-const COMMON_ENGLISH_WORDS = new Set([
-  "the", "be", "to", "of", "and", "a", "in", "that", "have", "it", "for", "not", "on", "with",
-  "he", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her",
-  "she", "or", "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up",
-  "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "can", "like", "time",
-  "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could",
-  "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think",
-  "also", "back", "after", "use", "two", "how", "our", "work", "first", "well", "way", "even",
-  "new", "want", "because", "any", "these", "give", "day", "most", "us", "is", "was", "are", "been",
-  "were", "being", "am", "had", "has", "does", "did", "doing", "done", "many", "much", "few", "more", 
-  "most", "other", "another", "some", "such", "same", "each", "every", "both", "all", "either", "neither", 
-  "any", "anything", "nothing", "everything", "something", "nobody", "somebody", "everyone", "anybody", 
-  "everyone", "somebody", "night", "day", "sun", "moon", "star", "sky", "earth", "world", "land", "sea", 
-  "water", "fire", "air", "wind", "rain", "snow", "ice", "heat", "cold", "warm", "hot", "cool", "tree", 
-  "flower", "grass", "leaf", "root", "stem", "branch", "plant", "animal", "bird", "fish", "cat", "dog", 
-  "horse", "lion", "tiger", "bear", "wolf", "fox", "deer", "rabbit", "mouse", "rat", "pig", "cow", "sheep", 
-  "goat", "bee", "ant", "fly", "book", "page", "word", "line", "story", "tale", "game", "play", "sport", "team", 
-  "race", "food", "bread", "meat", "fruit", "apple", "orange", "grape", "lemon", "pear", "peach", "plum"
-]);
-
 /**
  * Check if a word is valid English
  * @param word Word to check
@@ -53,7 +33,7 @@ const COMMON_ENGLISH_WORDS = new Set([
  */
 export const isValidWord = (word: string): boolean => {
   if (word.length < 3) return false; // Most word games require 3+ letter words
-  return COMMON_ENGLISH_WORDS.has(word.toLowerCase());
+  return englishDictionary.has(word.toLowerCase());
 };
 
 /**
@@ -84,4 +64,20 @@ export const validateWord = (word: string, letters: string[], foundWords: string
   }
   
   return { isValid: true, message: "Valid word!" };
+};
+
+/**
+ * Calculate bonus points based on word length
+ * @param word The submitted word
+ * @returns Bonus points
+ */
+export const calculateBonus = (word: string): number => {
+  const length = word.length;
+  
+  if (length >= 7) return 10;
+  if (length >= 6) return 5;
+  if (length >= 5) return 3;
+  if (length >= 4) return 1;
+  
+  return 0;
 };

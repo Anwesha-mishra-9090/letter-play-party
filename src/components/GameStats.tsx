@@ -6,9 +6,10 @@ interface GameStatsProps {
   score: number;
   timeLeft: number;
   maxTime: number;
+  wordCount?: number;
 }
 
-const GameStats = ({ score, timeLeft, maxTime }: GameStatsProps) => {
+const GameStats = ({ score, timeLeft, maxTime, wordCount = 0 }: GameStatsProps) => {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -21,6 +22,10 @@ const GameStats = ({ score, timeLeft, maxTime }: GameStatsProps) => {
         <div className="flex flex-col">
           <span className="text-sm text-gray-500">Score</span>
           <span className="text-2xl font-bold">{score}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <span className="text-sm text-gray-500">Words</span>
+          <span className="text-2xl font-bold">{wordCount}</span>
         </div>
         <div className="flex flex-col items-end">
           <span className="text-sm text-gray-500">Time Left</span>
