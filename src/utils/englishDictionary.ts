@@ -325,6 +325,8 @@ floor
 fly
 focus
 follow
+folk
+folks
 food
 foot
 for

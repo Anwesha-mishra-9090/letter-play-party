@@ -18,6 +18,8 @@ const commonWords = new Set([
   'cat', 'dog', 'cow', 'pig', 'hen', 'fox', 'owl', 'bat', 'ant', 'bee', 'ape',
   // Colors
   'red', 'blue', 'cyan', 'pink', 'gold', 'grey', 'teal',
+  // Additional common words
+  'folk', 'folks',
   // Other common short words
   'air', 'arm', 'art', 'ash', 'ask', 'awe', 'awn', 'aye', 'bad', 'bag', 'ban', 'bar', 
   'bat', 'bay', 'bed', 'bee', 'beg', 'bet', 'bid', 'big', 'bin', 'bit', 'boa', 'bob', 'bog',

@@ -1,4 +1,5 @@
 
+
 # WordCraft - Word Puzzle Game
 
 An interactive word puzzle game where players form valid words from a random set of letters.
@@ -25,7 +26,7 @@ An interactive word puzzle game where players form valid words from a random set
 
 This game uses a comprehensive English dictionary that includes:
 - Oxford 3000™ most important and useful words
-- Common English words for daily use
+- Common English words for daily use (including "folks" and other commonly used words)
 - Special handling for short words that might be missing from some dictionaries
 
 ## How to Play
@@ -39,3 +40,4 @@ This game uses a comprehensive English dictionary that includes:
 
 - Longer words earn more points
 - Consecutive valid words earn streak bonuses
+
