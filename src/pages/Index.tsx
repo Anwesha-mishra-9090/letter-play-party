@@ -87,43 +87,48 @@ const Index = () => {
   const handleSubmitWord = () => {
     if (!gameActive || currentWord.length < 3) return;
     
-    const result = validateWord(currentWord, letters, foundWords);
-    
-    if (result.isValid) {
-      const wordScore = calculateWordScore(currentWord);
-      const bonus = calculateBonus(currentWord);
-      const wordWithBonus = wordScore + bonus;
+    try {
+      const result = validateWord(currentWord, letters, foundWords);
       
-      setScore(prev => prev + wordWithBonus);
-      setFoundWords(prev => [...prev, currentWord.toLowerCase()]);
-      
-      // Consecutive valid word bonus
-      setConsecutiveValidWords(prev => prev + 1);
-      
-      // Show bonus message
-      if (bonus > 0) {
-        setLastBonus(bonus);
-        setShowBonus(true);
-        setTimeout(() => setShowBonus(false), 1500);
+      if (result.isValid) {
+        const wordScore = calculateWordScore(currentWord);
+        const bonus = calculateBonus(currentWord);
+        const wordWithBonus = wordScore + bonus;
+        
+        setScore(prev => prev + wordWithBonus);
+        setFoundWords(prev => [...prev, currentWord.toLowerCase()]);
+        
+        // Consecutive valid word bonus
+        setConsecutiveValidWords(prev => prev + 1);
+        
+        // Show bonus message
+        if (bonus > 0) {
+          setLastBonus(bonus);
+          setShowBonus(true);
+          setTimeout(() => setShowBonus(false), 1500);
+        }
+        
+        let message = `+${wordScore} points!`;
+        if (bonus > 0) {
+          message += ` +${bonus} bonus!`;
+        }
+        
+        toast.success(message);
+        
+        // Add consecutive bonus every 3 words
+        if (consecutiveValidWords > 0 && (consecutiveValidWords + 1) % 3 === 0) {
+          const streakBonus = 5;
+          setScore(prev => prev + streakBonus);
+          toast.success(`Word streak! +${streakBonus} bonus points!`);
+        }
+      } else {
+        toast.error(result.message);
+        // Reset consecutive words
+        setConsecutiveValidWords(0);
       }
-      
-      let message = `+${wordScore} points!`;
-      if (bonus > 0) {
-        message += ` +${bonus} bonus!`;
-      }
-      
-      toast.success(message);
-      
-      // Add consecutive bonus every 3 words
-      if (consecutiveValidWords > 0 && (consecutiveValidWords + 1) % 3 === 0) {
-        const streakBonus = 5;
-        setScore(prev => prev + streakBonus);
-        toast.success(`Word streak! +${streakBonus} bonus points!`);
-      }
-    } else {
-      toast.error(result.message);
-      // Reset consecutive words
-      setConsecutiveValidWords(0);
+    } catch (error) {
+      console.error("Error validating word:", error);
+      toast.error("Error validating word. Please try again.");
     }
     
     // Reset selection

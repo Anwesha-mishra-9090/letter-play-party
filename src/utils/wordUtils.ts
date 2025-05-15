@@ -1,4 +1,6 @@
+
 import englishDictionary from './englishDictionary';
+import { isValidEnglishWord } from '@/lib/utils';
 
 /**
  * Check if word can be formed from the given letters
@@ -31,8 +33,6 @@ export const canFormWord = (word: string, letters: string[]): boolean => {
  * @returns Boolean indicating if the word is valid
  */
 export const isValidWord = (word: string): boolean => {
-  const { isValidEnglishWord } = require('@/lib/utils');
-  
   // Word must be at least 2 characters
   if (word.length < 2) {
     return false;
