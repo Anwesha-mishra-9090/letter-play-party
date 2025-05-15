@@ -6,7 +6,7 @@ An interactive word puzzle game where players form valid words from a random set
 ## Features
 
 - Random letter generation for each game
-- Word validation against a comprehensive English dictionary
+- Word validation against a comprehensive Oxford-based English dictionary
 - Score tracking based on word length and complexity
 - Time-limited gameplay (3 minute countdown)
 - Visual feedback on word submissions
@@ -24,7 +24,8 @@ An interactive word puzzle game where players form valid words from a random set
 ## Dictionary
 
 This game uses a comprehensive English dictionary that includes:
-- Common English words from the Oxford dictionary
+- Oxford 3000™ most important and useful words
+- Common English words for daily use
 - Special handling for short words that might be missing from some dictionaries
 
 ## How to Play
@@ -38,4 +39,3 @@ This game uses a comprehensive English dictionary that includes:
 
 - Longer words earn more points
 - Consecutive valid words earn streak bonuses
-
