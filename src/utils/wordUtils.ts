@@ -1,4 +1,3 @@
-
 import englishDictionary from './englishDictionary';
 
 /**
@@ -32,8 +31,15 @@ export const canFormWord = (word: string, letters: string[]): boolean => {
  * @returns Boolean indicating if the word is valid
  */
 export const isValidWord = (word: string): boolean => {
-  if (word.length < 3) return false; // Most word games require 3+ letter words
-  return englishDictionary.has(word.toLowerCase());
+  const { isValidEnglishWord } = require('@/lib/utils');
+  
+  // Word must be at least 2 characters
+  if (word.length < 2) {
+    return false;
+  }
+
+  // Use our enhanced dictionary validation
+  return isValidEnglishWord(word);
 };
 
 /**
